@@ -1,4 +1,4 @@
-package com.project.project.domain.entitiy;
+package com.project.project.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -18,46 +18,47 @@ public class Orders {
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name="uuid2", strategy = "uuid2")
-    @Column(name = "order_key", unique = true, nullable = false)
+    @Column(unique = true)
     private UUID order_key;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private Integer price;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private LocalDate order_date;
 
-    @Column(length = 20, nullable = true)
+    @Column(length = 20, nullable = false)
     private String recipient;
 
-    @Column(length = 10, nullable = true)
+    @Column(length = 10, nullable = false)
     private String zip_code;
 
-    @Column(length = 100, nullable = true)
+    @Column(length = 100, nullable = false)
     private String address;
 
-    @Column(length = 100, nullable = true)
+    @Column(length = 100, nullable = false)
     private String address_detail;
 
-    @Column(length = 20, nullable = true)
+    @Column(length = 20, nullable = false)
     private String recipient_tel;
 
-    @Column(nullable = true)
-    private int item_cnt;
+    @Column(nullable = false)
+    private int item_cnt = 0;
 
     @Builder
-    public Orders(Integer price, LocalDate order_date, String recipient, String zip_code, String address, String address_detail, String recipient_tel, int item_cnt) {
+    public Orders(User user, Integer price, String recipient, String zip_code, String address, String address_detail, String recipient_tel, Integer item_cnt) {
+        this.user = user;
         this.price = price;
-        this.order_date = order_date;
+        this.order_date = LocalDate.now();
         this.recipient = recipient;
         this.zip_code = zip_code;
         this.address = address;
         this.address_detail = address_detail;
         this.recipient_tel = recipient_tel;
-        this.item_cnt = item_cnt;
+        this.item_cnt = item_cnt != null ? item_cnt : 0;
     }
 }

@@ -1,4 +1,4 @@
-package com.project.project.domain.entitiy;
+package com.project.project.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -19,26 +19,26 @@ public class Item {
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name="uuid2", strategy = "uuid2")
-    @Column(unique = true, nullable = false)
+    @Column(unique = true)
     private UUID item_key;
 
     @ManyToOne
     @JoinColumn(name = "category_key", nullable = false)
     private Category category;
 
-    @Column(length = 20, nullable = true)
+    @Column(length = 20, nullable = false)
     private String item_name;
 
-    @Column(length = 100, nullable = true)
+    @Column(length = 100, nullable = false)
     private String item_img;
 
-    @Column(length = 500, nullable = true)
+    @Column(length = 500, nullable = false)
     private String item_content;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private Integer sale_price;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private Integer cnt;
 
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)

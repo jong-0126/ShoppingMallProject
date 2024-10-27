@@ -1,4 +1,4 @@
-package com.project.project.domain.entitiy;
+package com.project.project.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -24,23 +24,24 @@ public class Notice {
     @JoinColumn(name = "admin_key", nullable = false)
     private Admin admin;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String title;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String img;
 
-    @Column(nullable = true)
-    private Integer hit;
+    @Column(nullable = false)
+    private Integer hit = 0;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private LocalDate date;
 
     @Builder
-    public Notice(String title, String img, Integer hit, LocalDate date){
+    public Notice(Admin admin, String title, String img, Integer hit){
+        this.admin = admin;
         this.title = title;
         this.img = img;
-        this.hit = hit;
-        this.date = date;
+        this.hit = hit != null ? hit : 0;
+        this.date = LocalDate.now();
     }
 }

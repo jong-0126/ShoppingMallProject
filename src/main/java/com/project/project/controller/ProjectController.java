@@ -1,10 +1,19 @@
 package com.project.project.controller;
 
+import com.project.project.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.UUID;
 
 @Controller
 public class ProjectController {
+
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/main")
     public String main(){
@@ -41,13 +50,4 @@ public class ProjectController {
         return "notice";
     }
 
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
-
-    @GetMapping("/signup")
-    public String signup() {
-        return "signup";
-    }
 }

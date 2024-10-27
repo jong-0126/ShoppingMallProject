@@ -1,4 +1,4 @@
-package com.project.project.domain.entitiy;
+package com.project.project.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -18,6 +18,7 @@ public class Review {
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name="uuid2", strategy = "uuid2")
+    @Column(unique = true)
     private UUID review_key;
 
     @ManyToOne
@@ -28,7 +29,7 @@ public class Review {
     @JoinColumn(name = "item_key", nullable = false)
     private Item item;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String title;
 
     @Column(nullable = true)
@@ -38,10 +39,12 @@ public class Review {
     private LocalDate upload_date;
 
     @Builder
-    public Review(String title, String content, LocalDate upload_date){
+    public Review(User user, Item item, String title, String content){
 
+        this.user = user;
+        this.item = item;
         this.title = title;
         this.content = content;
-        this.upload_date = upload_date;
+        this.upload_date = LocalDate.now();
     }
 }

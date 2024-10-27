@@ -1,4 +1,4 @@
-package com.project.project.domain.entitiy;
+package com.project.project.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -19,14 +19,14 @@ public class Category {
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name="uuid2", strategy = "uuid2")
-    @Column(unique = true, nullable = false)
+    @Column(unique = true)
     private UUID category_key;
 
-    @Column(nullable = true)
+    @Column(nullable = true, length = 50)
     private String category_name;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Item> item = new ArrayList<>();
+    private List<Item> items = new ArrayList<>();
 
     @Builder
     public Category(String category_name){

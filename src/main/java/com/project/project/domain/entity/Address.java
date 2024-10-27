@@ -1,4 +1,4 @@
-package com.project.project.domain.entitiy;
+package com.project.project.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -17,40 +17,40 @@ public class Address {
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name="uuid2", strategy = "uuid2")
-    @Column(unique = true, nullable = false)
+    @Column(unique = true)
     private UUID address_key;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String recipient;
 
-    @Column(nullable = true)
-    private Integer zip_code;
+    @Column(nullable = false)
+    private String zip_code;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String address;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String address_detail;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String recipient_tel;
 
-    @Column(nullable = true)
-    private Boolean def;
+    @Column(nullable = false)
+    private Boolean is_default;
 
     @Builder
-    public Address(String recipient, Integer zip_code, String address, String address_detail, String recipient_tel, Boolean def){
+    public Address(String recipient, String zip_code, String address, String address_detail, String recipient_tel, Boolean is_default){
 
         this.recipient = recipient;
         this.zip_code = zip_code;
         this.address = address;
         this.address_detail = address_detail;
         this.recipient_tel = recipient_tel;
-        this.def = def;
+        this.is_default = is_default;
 
     }
 

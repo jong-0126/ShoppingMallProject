@@ -1,9 +1,10 @@
-package com.project.project.domain.entitiy;
+package com.project.project.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
+@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "user")
@@ -19,7 +21,7 @@ public class User {
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name="uuid2", strategy = "uuid2")
-    @Column(unique = true, nullable = false)
+    @Column(unique = true)
     private UUID user_id;
 
     @Column(length = 15, nullable = false)
@@ -34,17 +36,11 @@ public class User {
     @Column(length = 20, nullable = false)
     private String tel;
 
-    @Column(length = 30, nullable = false)
-    private String jumin;
-
     @Column(columnDefinition = "TINYINT(1)", nullable = false)
     private Boolean gender;
 
     @Column(columnDefinition = "TINYINT(1)", nullable = false)
-    private Boolean banned;
-
-    @Column(columnDefinition = "TINYINT(1)", nullable = false)
-    private Boolean signout;
+    private Boolean sign_out;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Orders> orders = new ArrayList<>();
@@ -68,14 +64,12 @@ public class User {
     private List<Cart> carts = new ArrayList<>();
 
     @Builder
-    public User(String name, String password, String email, String tel, String jumin, Boolean gender, Boolean banned, Boolean signout){
+    public User(String name, String password, String email, String tel, Boolean gender, Boolean sign_out){
         this.name = name;
         this.password = password;
         this.email = email;
         this.tel = tel;
-        this.jumin = jumin;
         this.gender = gender;
-        this.banned = banned;
-        this.signout = signout;
+        this.sign_out = sign_out;
     }
 }

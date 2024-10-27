@@ -1,4 +1,4 @@
-package com.project.project.domain.entitiy;
+package com.project.project.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -12,13 +12,14 @@ import java.util.UUID;
 @Getter
 @NoArgsConstructor
 @Entity
-@Table(name = "cart")
-public class Cart {
+@Table(name = "question")
+public class Question {
 
     @Id
     @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    private UUID cart_key;
+    @GenericGenerator(name="uuid2", strategy = "uuid2")
+    @Column(unique = true)
+    private UUID question_key;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -29,14 +30,22 @@ public class Cart {
     private Item item;
 
     @Column(nullable = true)
-    private Integer cnt;
+    private String title;
 
     @Column(nullable = true)
-    private LocalDate date;
+    private String content;
+
+    @Column(nullable = true)
+    private LocalDate upload_date;
 
     @Builder
-    public Cart(Integer cnt, LocalDate date){
-        this.cnt = cnt;
-        this.date = date;
+    public Question(User user, Item item, String title, String content){
+
+        this.user = user;
+        this.item = item;
+        this.title = title;
+        this.content = content;
+        this.upload_date = LocalDate.now();
+
     }
 }
