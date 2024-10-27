@@ -30,4 +30,24 @@ public class ProjectController {
     public String itemUpload(){
         return "add-product";
     }
+
+    @GetMapping("/product")
+    public String product(){
+        return "product";
+    }
+
+    @GetMapping("/notice")
+    public String notice() {
+        return "notice";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @GetMapping("/signup")
+    public String signup() {
+        return "signup";
+    }
 }
