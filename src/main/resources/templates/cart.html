@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart</title>
+  <link rel="stylesheet" href="css/cart.css"> <!-- CSS 경로는 필요에 따라 수정 -->
+</head>
+<body>
+
+<header>
+  <h1>Shopping Cart</h1>
+</header>
+
+<section>
+  <table>
+    <thead>
+    <tr>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Total</th>
+      <th>Remove</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- 장바구니에 담긴 각 제품을 반복하여 보여줌 -->
+    <tr th:each="item : ${cartItems}">
+      <td th:text="${item.name}">Product Name</td>
+      <td><input type="number" th:value="${item.quantity}" min="1"></td>
+      <td th:text="${item.price}">0</td>
+      <td th:text="${item.price * item.quantity}">0</td>
+      <td><button type="button">Remove</button></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="cart-summary">
+    <p>Total Quantity: <span th:text="${totalQuantity}">0</span></p>
+    <p>Total Price: <span th:text="${totalPrice}">0</span></p>
+    <button type="button">Checkout</button>
+  </div>
+</section>
+<script src="js/cart.js"></script>
+</body>
+</html>
