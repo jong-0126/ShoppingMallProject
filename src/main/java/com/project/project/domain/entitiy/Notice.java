@@ -1,11 +1,10 @@
-package com.project.project.domain.member;
+package com.project.project.domain.entitiy;
 
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
-import org.thymeleaf.spring6.processor.SpringActionTagProcessor;
 
 import java.time.LocalDate;
 import java.util.UUID;

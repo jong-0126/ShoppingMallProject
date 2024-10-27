@@ -1,11 +1,10 @@
-package com.project.project.domain.member;
+package com.project.project.domain.entitiy;
 
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -22,8 +21,8 @@ public class Cart {
     private UUID cart_key;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id", nullable = false)
-    private Customer customer;
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "item_key", nullable = false)

@@ -1,10 +1,9 @@
-package com.project.project.domain.member;
+package com.project.project.domain.entitiy;
 
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.extern.java.Log;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDate;
@@ -23,8 +22,8 @@ public class Orders {
     private UUID order_key;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id", nullable = false)
-    private Customer customer;
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @Column(nullable = true)
     private Integer price;

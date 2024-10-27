@@ -1,4 +1,4 @@
-package com.project.project.domain.member;
+package com.project.project.domain.entitiy;
 
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -21,8 +21,8 @@ public class Review {
     private UUID review_key;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id", nullable = false)
-    private Customer customer;
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "item_key", nullable = false)

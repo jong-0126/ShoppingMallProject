@@ -1,4 +1,4 @@
-package com.project.project.domain.member;
+package com.project.project.domain.entitiy;
 
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -21,8 +21,8 @@ public class Address {
     private UUID address_key;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id", nullable = false)
-    private Customer customer;
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @Column(nullable = true)
     private String recipient;
