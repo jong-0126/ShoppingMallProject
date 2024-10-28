@@ -34,7 +34,6 @@ function validateSignupForm() {
     }
 
     errorMessage.classList.add('hidden'); // 오류가 없을 때는 오류 메시지를 숨김
-    alert('회원가입 성공!');
     return true;
 }
 

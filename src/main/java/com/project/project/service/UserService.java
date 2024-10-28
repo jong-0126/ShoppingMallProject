@@ -25,8 +25,8 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public boolean login(String name, String password){
-        return userRepository.findByName(name)
+    public boolean login(String email, String password){
+        return userRepository.findByEmail(email)
                 .map(user -> passwordEncoder.matches(password, user.getPassword()))
                 .orElse(false);
     }
