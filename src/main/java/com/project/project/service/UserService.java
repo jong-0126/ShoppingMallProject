@@ -12,14 +12,11 @@ import java.util.UUID;
 @Service
 public class UserService {
 
+    @Autowired
     private UserRepository userRepository;
-    private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserService(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder){
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
-    }
+    private BCryptPasswordEncoder passwordEncoder;
 
     public void register(User user){
         String hashedPassword = passwordEncoder.encode(user.getPassword());

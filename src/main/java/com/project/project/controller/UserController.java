@@ -4,10 +4,8 @@ import com.project.project.domain.entity.User;
 import com.project.project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UserController {
@@ -25,9 +23,10 @@ public class UserController {
         return "login";
     }
 
-    @PostMapping("/register")
+    @PostMapping("/registerPro")
     @ResponseBody
-    public String register(@RequestParam User user){
+    public String registerPro(@ModelAttribute User user){
+
         try{
             userService.register(user);
             return "회원가입 성공!";
@@ -38,9 +37,9 @@ public class UserController {
 
     }
 
-    @PostMapping("/login")
+    @PostMapping("/loginPro")
     @ResponseBody
-    public String login(@RequestParam String name, @RequestParam String password) {
+    public String loginPro(String name, String password) {
         if(userService.login(name, password)){
             return "로그인 성공!";
         }else{

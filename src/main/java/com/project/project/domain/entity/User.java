@@ -27,7 +27,7 @@ public class User {
     @Column(length = 15, nullable = false)
     private String name;
 
-    @Column(length = 30, nullable = false)
+    @Column(length = 100, nullable = false)
     private String password;
 
     @Column(length = 30, nullable = false)
@@ -40,7 +40,7 @@ public class User {
     private Boolean gender;
 
     @Column(columnDefinition = "TINYINT(1)", nullable = false)
-    private Boolean sign_out;
+    private Boolean sign_out = false;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Orders> orders = new ArrayList<>();
