@@ -4,12 +4,15 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
+@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "cart")
@@ -30,14 +33,16 @@ public class Cart {
     private Item item;
 
     @Column(nullable = false)
-    private Integer cnt = 0;
+    private Integer cnt;
 
     @Column(nullable = false)
-    private LocalDate date;
+    private LocalDateTime date;
 
     @Builder
-    public Cart(Integer cnt){
-        this.cnt = (cnt != null && cnt > 0) ? cnt : 0;
-        this.date = LocalDate.now();
+    public Cart(User user, Item item, Integer cnt,LocalDateTime date){
+        this.user = user;
+        this.item = item;
+        this.cnt = cnt;
+        this.date = date;
     }
 }

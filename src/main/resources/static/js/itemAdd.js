@@ -12,7 +12,7 @@ document.querySelector("form").addEventListener("submit", function (event) {
 });
 
 // 이미지 미리보기 기능
-document.getElementById("productImage").addEventListener("change", function () {
+document.getElementById("item_img").addEventListener("change", function () {
     const file = this.files[0];
     if (file) {
         const reader = new FileReader();

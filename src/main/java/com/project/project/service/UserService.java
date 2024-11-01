@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.UUID;
 
 
@@ -25,12 +26,17 @@ public class UserService {
         userRepository.save(user);
     }
 
+    public boolean isEmailDuplicated(String email){
+        return userRepository.findByEmail(email).isPresent();
+    }
+
     public boolean login(String email, String password){
         return userRepository.findByEmail(email)
                 .map(user -> passwordEncoder.matches(password, user.getPassword()))
                 .orElse(false);
     }
 
-
-
+    public Optional<User> authenticate(String email, String password) {
+        return userRepository.findByEmail(email).filter(user -> passwordEncoder.matches(password, user.getPassword()));
+    }
 }

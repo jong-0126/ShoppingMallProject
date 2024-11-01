@@ -3,5 +3,8 @@ function changeImage(imageSrc) {
 }
 
 function addToCart() {
-    alert("장바구니에 추가되었습니다!");
+    const form = document.querySelector('form');
+    form.submit(); // 폼을 제출
 }
+    // 다른 코드
+});

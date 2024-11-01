@@ -1,104 +1,92 @@
-/* 기본 스타일 */
+/* cart.css */
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  margin: 0;
+  padding: 20px;
 }
 
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem;
-    width: 100%;
-    text-align: center;
+h2 {
+  text-align: center;
+  color: #444;
 }
 
-h1 {
-    margin: 0;
-    font-size: 1.8rem;
-}
-
-/* 장바구니 테이블 스타일 */
 section {
-    margin-top: 2rem;
-    width: 90%;
-    max-width: 800px;
-    background: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    border-radius: 8px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 1.5rem;
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
 }
 
-thead th {
-    background-color: #333;
-    color: #fff;
-    padding: 0.75rem;
-    text-align: left;
-    font-weight: normal;
+th, td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
 }
 
-tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+th {
+  background-color: #007bff;
+  color: #fff;
 }
 
-td, th {
-    padding: 0.75rem;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
+td {
+  color: #555;
 }
 
 input[type="number"] {
-    width: 60px;
-    padding: 0.5rem;
-    text-align: center;
+  width: 60px;
+  padding: 4px;
+  font-size: 16px;
+  text-align: center;
 }
 
-/* 버튼 스타일 */
 button {
-    background-color: #ff6b6b;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 0.9rem;
+  padding: 8px 12px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #dc3545;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 button:hover {
-    background-color: #ff5252;
+  background-color: #c82333;
 }
 
-/* 장바구니 요약 스타일 */
 .cart-summary {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1.1rem;
-    font-weight: bold;
-    padding-top: 1rem;
-    border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background-color: #f1f1f1;
+  border-radius: 8px;
 }
 
 .cart-summary p {
-    margin: 0;
+  font-size: 18px;
+  color: #333;
+  margin: 0;
 }
 
 .cart-summary button {
-    background-color: #333;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #28a745;
+  border-radius: 4px;
 }
 
 .cart-summary button:hover {
-    background-color: #555;
+  background-color: #218838;
 }

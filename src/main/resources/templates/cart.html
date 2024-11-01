@@ -1,36 +1,37 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shopping Cart</title>
-  <link rel="stylesheet" href="css/cart.css"> <!-- CSS 경로는 필요에 따라 수정 -->
+  <link rel="stylesheet" href="css/cart.css">
 </head>
 <body>
 
-<header>
-  <h1>Shopping Cart</h1>
-</header>
-
+<h2>장바구니</h2>
 <section>
   <table>
     <thead>
     <tr>
-      <th>Product</th>
-      <th>Quantity</th>
-      <th>Price</th>
-      <th>Total</th>
-      <th>Remove</th>
+      <th>제품 명</th>
+      <th>수량</th>
+      <th>가격</th>
+      <th>전체 가격</th>
+      <th>삭제</th>
     </tr>
     </thead>
     <tbody>
     <!-- 장바구니에 담긴 각 제품을 반복하여 보여줌 -->
-    <tr th:each="item : ${cartItems}">
-      <td th:text="${item.name}">Product Name</td>
-      <td><input type="number" th:value="${item.quantity}" min="1"></td>
-      <td th:text="${item.price}">0</td>
-      <td th:text="${item.price * item.quantity}">0</td>
-      <td><button type="button">Remove</button></td>
+    <tr th:each="cartItem : ${cartList}">
+      <!-- Item의 이름, 수량, 가격 정보 출력 -->
+      <td th:text="${cartItem.item.item_name}">Product Name</td>
+      <td><input type="number" th:value="${cartItem.cnt}" min="1"></td>
+      <td th:text="${cartItem.item.sale_price}">0</td>
+      <td th:text="${cartItem.item.sale_price * cartItem.cnt}">0</td>
+      <form action="/cart/remove" method="post">
+        <input type="hidden" name="cart_key" th:value="${cartItem.cart_key}" />
+        <td><button type="submit">Remove</button></td>
+      </form>
     </tr>
     </tbody>
   </table>
@@ -41,6 +42,6 @@
     <button type="button">Checkout</button>
   </div>
 </section>
-<script src="js/cart.js"></script>
+
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,23 +40,28 @@
             <!-- 상품 관리 섹션 -->
             <section id="products" class="admin-section" style="display: none;">
                 <h2>상품 관리</h2>
-                <button class="btn btn-primary mb-3" onclick="window.location.href='/add-product'">새 상품 추가</button>
+                <button class="btn btn-primary mb-3" onclick="window.location.href='/itemAdd'">새 상품 추가</button>
                 <table class="table">
                     <thead>
                     <tr>
                         <th>상품명</th>
                         <th>가격</th>
                         <th>재고</th>
-                        <th>작업</th>
+                        <th>삭제</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>예시 상품</td>
-                        <td>₩10000</td>
-                        <td>50</td>
-                        <td><button class="btn btn-sm btn-danger">삭제</button></td>
-                    </tr>
+                        <tr th:if="${itemList.size() == 0}">
+                            <td colspan="4">등록된 상품이 없습니다.</td>
+                        </tr>
+                        <tr th:each="item : ${itemList}">
+                            <td th:text="${item.item_name}"></td>
+                            <td th:text="${item.sale_price}"></td>
+                            <td th:text="${item.cnt}"></td>
+                            <td>
+                                <button class="btn btn-sm btn-danger">삭제</button> <!-- 삭제 버튼 -->
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </section>

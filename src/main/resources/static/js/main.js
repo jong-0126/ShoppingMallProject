@@ -2,3 +2,4 @@
 document.addEventListener("DOMContentLoaded", () => {
     console.log("쇼핑몰 메인 페이지가 로드되었습니다!");
 });
+

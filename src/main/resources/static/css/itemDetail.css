@@ -1,0 +1,100 @@
+/* itemDetail.css */
+
+/* 기본 스타일 */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f5; /* 연한 회색 배경 */
+    margin: 0;
+    padding: 20px;
+}
+
+/* 상품 상세 정보 섹션 */
+.product-detail {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* 이미지 갤러리 */
+.image-gallery {
+    flex: 1;
+    padding: 20px;
+}
+
+/* 메인 이미지 스타일 */
+#main-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease; /* 이미지 확대 효과 */
+}
+
+#main-image:hover {
+    transform: scale(1.05); /* 마우스 오버 시 이미지 확대 */
+}
+
+/* 상품 정보 */
+.product-info {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #f9f9f9; /* 밝은 배경 */
+}
+
+/* 상품 제목 */
+.product-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333; /* 어두운 글씨 */
+    margin: 0 0 10px;
+}
+
+/* 상품 가격 */
+.product-price {
+    font-size: 22px;
+    color: #e91e63; /* 핑크색 */
+    margin: 0 0 20px;
+}
+
+/* 상품 설명 */
+.product-description {
+    font-size: 16px;
+    color: #555; /* 중간 회색 */
+    margin-bottom: 20px;
+}
+
+/* 버튼 스타일 */
+.add-to-cart, .buy-now{
+    background-color: #4CAF50; /* 초록색 */
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s; /* 버튼 호버 효과 */
+    margin-top: 10px; /* 버튼 사이에 간격 추가 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 버튼 그림자 효과 */
+}
+
+.add-to-cart:hover {
+    background-color: #45a049; /* 어두운 초록색 */
+    transform: translateY(-2px); /* 호버 시 버튼 약간 위로 이동 */
+}
+
+.buy-now:hover {
+    background-color: #45a049; /* 어두운 초록색 */
+    transform: translateY(-2px); /* 호버 시 버튼 약간 위로 이동 */
+}
+
+/* 버튼 두 개를 수직으로 정렬 */
+.product-info button {
+    margin-top: 10px;
+}

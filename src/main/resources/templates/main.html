@@ -1,21 +1,17 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>쇼핑몰 메인 페이지</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/header.css">
 </head>
 <body>
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
 <!-- Header -->
-<header class="header">
-    <h1>My 쇼핑몰</h1>
-    <nav class="nav">
-        <a href="#home">홈</a>
-        <a href="/product">상품</a>
-        <a href="#contact">문의하기</a>
-    </nav>
-</header>
+<div th:insert="~{header :: header}"></div>
 
 <!-- Main Banner -->
 <section class="banner">
@@ -48,5 +44,6 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="js/header.js"></script>
 </body>
 </html>

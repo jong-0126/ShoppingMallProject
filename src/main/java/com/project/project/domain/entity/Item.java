@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
+@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "item")
@@ -22,14 +24,13 @@ public class Item {
     @Column(unique = true)
     private UUID item_key;
 
-    @ManyToOne
-    @JoinColumn(name = "category_key", nullable = false)
-    private Category category;
+    @Column(nullable = false)
+    private Boolean category;
 
     @Column(length = 20, nullable = false)
     private String item_name;
 
-    @Column(length = 100, nullable = false)
+    @Column(columnDefinition = "TEXT", nullable = false)
     private String item_img;
 
     @Column(length = 500, nullable = false)
@@ -53,9 +54,14 @@ public class Item {
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Cart> carts = new ArrayList<>();
 
-    @Builder
-    public Item(String item_name, String item_img, String item_content, Integer sale_price, Integer cnt){
+    public String getItemImage() {
+        return "data:image/jpeg;base64," + this.item_img; // itemImage가 Base64로 저장된 문자열이라 가정
+    }
 
+    @Builder
+    public Item(Boolean category, String item_name, String item_img, String item_content, Integer sale_price, Integer cnt){
+
+        this.category = category;
         this.item_name = item_name;
         this.item_img = item_img;
         this.item_content = item_content;

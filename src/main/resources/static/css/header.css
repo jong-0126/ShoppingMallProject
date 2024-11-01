@@ -1,0 +1,28 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333; /* 어두운 색상으로 변경 */
+    padding: 15px 20px; /* 패딩 조정 */
+    color: #ecf0f1; /* 연한 색상으로 변경 */
+}
+
+.header h1 {
+    font-size: 24px; /* 제목 크기 조정 */
+}
+
+.nav {
+    display: flex;
+    align-items: center; /* 수직 중앙 정렬 */
+}
+
+.nav a {
+    color: #ecf0f1;
+    margin-left: 15px;
+    text-decoration: none;
+    transition: color 0.3s; /* 마우스 오버 시 색상 전환 효과 */
+}
+
+.nav a:hover {
+    color: #3498db; /* 호버 시 색상 변경 */
+}

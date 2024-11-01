@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상품 상세 페이지</title>
+    <link rel="stylesheet" href="css/item.css">
+    <link rel="stylesheet" href="css/header.css">
+</head>
+<body>
+
+<div th:insert="~{header :: header}"></div>
+
+<!-- 상품 상세 정보 섹션 -->
+<section class="product-detail">
+    <div class="product" th:each="item : ${itemList}">
+        <div class="product-image">
+            <img th:src="${item.ItemImage}" alt="상품 이미지">
+        </div>
+        <div class="product-info">
+            <h3 th:text="${item.item_name}">상품명</h3>
+            <p class="price" th:text="'₩' +${item.sale_price}">₩0</p>
+            <button class="buy-btn" th:attr="data-item-key=${item.item_key}">구매하기</button>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <p>© 2024 My 쇼핑몰. All Rights Reserved.</p>
+</footer>
+
+<script src="js/item.js"></script>
+<script src="js/header.js"></script>
+</body>
+</html>

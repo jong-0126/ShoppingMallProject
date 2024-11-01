@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>헤더</title>
+</head>
+<body>
+<header class="header">
+  <h1>My 쇼핑몰</h1>
+  <nav class="nav">
+    <a href="/main">홈</a>
+    <a href="/item">상품</a>
+    <a href="#">문의하기</a>
+    <div th:if="${session.email}">
+      <a onclick="logout()">로그아웃</a>
+      <a href="/cart">장바구니</a>
+    </div>
+    <div th:if="${session.email == null}">
+      <a href="/login">로그인</a>
+    </div>
+  </nav>
+</header>
+</body>
+</html>

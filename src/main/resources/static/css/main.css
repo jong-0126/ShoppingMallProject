@@ -3,39 +3,20 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-}
-
-/* 헤더 */
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    padding: 10px 20px;
-    color: #fff;
-}
-
-.nav a {
-    color: #fff;
-    margin-left: 15px;
-    text-decoration: none;
-}
-
-.nav a:hover {
-    text-decoration: underline;
+    font-family: 'Arial', sans-serif;
 }
 
 /* 배너 */
 .banner {
-    background: url('img/banner.jpg') no-repeat center center / cover;
-    padding: 60px 20px;
+    background: url('img/banner.jpg') no-repeat center center / cover; /* 배경 이미지 설정 */
+    padding: 80px 20px; /* 배너 내부 패딩 조정 */
     text-align: center;
     color: white;
 }
 
 .banner h2 {
     font-size: 36px;
+    margin-bottom: 10px; /* 제목 아래 여백 추가 */
 }
 
 .banner p {
@@ -56,11 +37,18 @@
 }
 
 .product-card {
-    width: 200px;
-    padding: 10px;
+    width: 220px; /* 카드 너비 증가 */
+    padding: 15px;
     border: 1px solid #ddd;
-    border-radius: 5px;
-    text-align: center;
+    border-radius: 8px;
+    background-color: #fff; /* 카드 배경색 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
+    transition: transform 0.3s, box-shadow 0.3s; /* 마우스 오버 효과 추가 */
+}
+
+.product-card:hover {
+    transform: translateY(-5px); /* 카드 호버 시 살짝 위로 이동 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* 더 진한 그림자 효과 */
 }
 
 .product-card img {
@@ -81,9 +69,9 @@
 
 /* 푸터 */
 .footer {
-    background-color: #333;
+    background-color: #333; /* 푸터 배경색 */
     padding: 10px;
     text-align: center;
-    color: #fff;
+    color: #ecf0f1; /* 푸터 글자색 */
     font-size: 14px;
 }
