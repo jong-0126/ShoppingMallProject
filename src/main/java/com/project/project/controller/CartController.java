@@ -66,7 +66,7 @@ public class CartController {
 
     @PostMapping("/cart/add")
     public String CartAdd(@RequestParam("item_key")UUID item_key,
-                          @RequestParam("cnt") int cnt,
+                          @RequestParam("cnt") Integer cnt,
                           HttpSession session, Model model){
 
         UUID user_id = (UUID) session.getAttribute("user_id");

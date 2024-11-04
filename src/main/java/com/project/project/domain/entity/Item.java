@@ -30,7 +30,7 @@ public class Item {
     @Column(length = 20, nullable = false)
     private String item_name;
 
-    @Column(columnDefinition = "TEXT", nullable = false)
+    @Column(columnDefinition = "MEDIUMTEXT", nullable = false)
     private String item_img;
 
     @Column(length = 500, nullable = false)

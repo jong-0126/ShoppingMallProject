@@ -23,7 +23,7 @@ public class CartService {
                 .orElse(Cart.builder()
                 .user(user)
                 .item(item)
-                .cnt(cnt) // 기본 수량
+                .cnt(0) // 기본 수량
                 .date(LocalDateTime.now())
                 .build()
                 );
