@@ -14,6 +14,7 @@
     <div th:if="${session.email}">
       <a onclick="logout()">로그아웃</a>
       <a href="/cart">장바구니</a>
+      <a href="/myPage">마이페이지</a>
     </div>
     <div th:if="${session.email == null}">
       <a href="/login">로그인</a>

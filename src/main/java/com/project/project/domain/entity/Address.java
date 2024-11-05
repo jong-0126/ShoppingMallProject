@@ -4,11 +4,13 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.util.UUID;
 
 @Getter
+@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "address")
@@ -25,32 +27,28 @@ public class Address {
     private User user;
 
     @Column(nullable = false)
-    private String recipient;
+    private String postcode;
 
     @Column(nullable = false)
-    private String zip_code;
+    private String roadAddress;
 
     @Column(nullable = false)
-    private String address;
+    private String jibunAddress;
 
     @Column(nullable = false)
-    private String address_detail;
+    private String detailAddress;
 
     @Column(nullable = false)
-    private String recipient_tel;
-
-    @Column(nullable = false)
-    private Boolean is_default;
+    private String extraAddress;
 
     @Builder
-    public Address(String recipient, String zip_code, String address, String address_detail, String recipient_tel, Boolean is_default){
+    public Address(String postcode, String roadAddress, String jibunAddress, String detailAddress, String extraAddress){
 
-        this.recipient = recipient;
-        this.zip_code = zip_code;
-        this.address = address;
-        this.address_detail = address_detail;
-        this.recipient_tel = recipient_tel;
-        this.is_default = is_default;
+        this.postcode = postcode;
+        this.roadAddress = roadAddress;
+        this.jibunAddress = jibunAddress;
+        this.detailAddress = detailAddress;
+        this.extraAddress = extraAddress;
 
     }
 

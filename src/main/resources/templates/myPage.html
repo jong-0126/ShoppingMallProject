@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마이페이지</title>
+  <link rel="stylesheet" href="css/myPage.css">
+</head>
+<body>
+<main class="my-page-container">
+  <h2>마이페이지</h2>
+
+  <!-- 프로필 정보 -->
+  <section class="profile-info card">
+    <h3>프로필 정보</h3>
+    <div class="info">
+      <label>사용자 이름:</label>
+      <p th:text="${user.name}"></p>
+    </div>
+    <div class="info">
+      <label>이메일:</label>
+      <p th:text="${user.email}"></p>
+    </div>
+    <div class="info">
+      <label>전화번호:</label>
+      <p th:text="${user.tel}"></p>
+    </div>
+    <button onclick="location.href='/user/update'" class="btn">정보 수정</button>
+  </section>
+
+  <!-- 등록된 주소 -->
+  <section class="address-view card">
+    <h3>등록된 주소</h3>
+    <div th:each="addressList : ${addressList}">
+      <p th:text="'우편번호: ' + ${addressList.postcode}"></p>
+      <p th:text="'도로명주소: ' + ${addressList.roadAddress}"></p>
+      <p th:text="'지번주소: ' + ${addressList.jibunAddress}"></p>
+      <p th:text="'상세주소: ' + ${addressList.detailAddress}"></p>
+      <p th:text="'참고항목: ' + ${addressList.extraAddress}"></p>
+    </div>
+  </section>
+
+  <!-- 주소 등록 -->
+  <section class="address-info card">
+    <h3>새로운 주소 등록</h3>
+    <form action="/address" method="get">
+      <button type="submit" class="btn">등록</button>
+    </form>
+  </section>
+
+  <!-- 주문 내역 -->
+  <section class="order-history card">
+    <h3>주문 내역</h3>
+    <table>
+      <thead>
+      <tr>
+        <th>주문 번호</th>
+        <th>주문 날짜</th>
+        <th>주문 상태</th>
+        <th>총 금액</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>001</td>
+        <td>2024-01-01</td>
+        <td>배송 중</td>
+        <td>50,000 원</td>
+      </tr>
+      <tr>
+        <td>002</td>
+        <td>2024-01-15</td>
+        <td>배송 완료</td>
+        <td>30,000 원</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+</body>
+</html>

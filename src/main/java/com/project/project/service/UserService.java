@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -38,5 +39,9 @@ public class UserService {
 
     public Optional<User> authenticate(String email, String password) {
         return userRepository.findByEmail(email).filter(user -> passwordEncoder.matches(password, user.getPassword()));
+    }
+
+    public List<User> userList(){
+        return userRepository.findAll();
     }
 }
