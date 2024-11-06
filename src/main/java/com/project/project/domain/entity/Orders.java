@@ -4,12 +4,16 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
+@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "orders")
@@ -25,40 +29,29 @@ public class Orders {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @ManyToOne
+    @JoinColumn(name = "address_key", nullable = false)
+    private Address address;
+
     @Column(nullable = false)
-    private Integer price;
+    private Integer total_price;
+
+    @Column(nullable = false)
+    private Integer total_cnt = 0;
 
     @Column(nullable = false)
     private LocalDate order_date;
 
-    @Column(length = 20, nullable = false)
-    private String recipient;
-
-    @Column(length = 10, nullable = false)
-    private String zip_code;
-
-    @Column(length = 100, nullable = false)
-    private String address;
-
-    @Column(length = 100, nullable = false)
-    private String address_detail;
-
-    @Column(length = 20, nullable = false)
-    private String recipient_tel;
-
-    @Column(nullable = false)
-    private int item_cnt = 0;
+    @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderItem> orderItems = new ArrayList<>();
 
     @Builder
-    public Orders(User user, Integer price, String recipient, String zip_code, String address, String address_detail, String recipient_tel, Integer item_cnt) {
+    public Orders(User user, Address address, List<OrderItem> orderItems, Integer total_price, Integer total_cnt) {
         this.user = user;
-        this.price = price;
-        this.order_date = LocalDate.now();
-        this.recipient = recipient;
-        this.zip_code = zip_code;
         this.address = address;
-        this.address_detail = address_detail;
-        this.recipient_tel = recipient_tel;
-        this.item_cnt = item_cnt != null ? item_cnt : 0;
+        this.orderItems = orderItems;
+        this.total_price = total_price;
+        this.order_date = LocalDate.now();
+        this.total_cnt = total_cnt != null ? total_cnt : 0;
     }
 }

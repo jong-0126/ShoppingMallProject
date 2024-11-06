@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -40,6 +42,10 @@ public class Address {
 
     @Column(nullable = false)
     private String extraAddress;
+
+    @OneToMany(mappedBy = "address", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Orders> orders = new ArrayList<>();
+
 
     @Builder
     public Address(String postcode, String roadAddress, String jibunAddress, String detailAddress, String extraAddress){

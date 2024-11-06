@@ -25,23 +25,25 @@
     <tbody>
     <!-- 장바구니에 담긴 각 제품을 반복하여 보여줌 -->
     <tr th:each="cartItem : ${cartList}">
-      <!-- Item의 이름, 수량, 가격 정보 출력 -->
       <td th:text="${cartItem.item.item_name}">Product Name</td>
       <td><input type="number" th:value="${cartItem.cnt}"></td>
       <td th:text="${cartItem.item.sale_price}">0</td>
-      <td>0</td> <!-- 전체 가격은 자바스크립트로 계산해서 채워질 예정 -->
+      <td th:text="${cartItem.item.sale_price * cartItem.cnt}">0</td>
       <form action="/cart/remove" method="post">
         <input type="hidden" name="cart_key" th:value="${cartItem.cart_key}" />
         <td><button type="submit">Remove</button></td>
       </form>
     </tr>
+
     </tbody>
   </table>
 
   <div class="cart-summary">
-    <p>총 수량: <span>0</span></p>
-    <p>총 가격: <span>0</span></p>
-    <button type="button">구매하기</button>
+      <p>총 수량: <span>0</span></p>
+      <p>총 가격: <span>0</span></p>
+    <form action="/orders" method="get">
+      <button type="submit">구매하기</button>
+    </form>
   </div>
 </section>
 <script src="js/header.js"></script>

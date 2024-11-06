@@ -40,8 +40,4 @@ public class UserService {
     public Optional<User> authenticate(String email, String password) {
         return userRepository.findByEmail(email).filter(user -> passwordEncoder.matches(password, user.getPassword()));
     }
-
-    public List<User> userList(){
-        return userRepository.findAll();
-    }
 }

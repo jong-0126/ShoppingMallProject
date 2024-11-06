@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주문 페이지</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="order-container">
+    <h2>주문 페이지</h2>
+
+    <!-- 주문 요약 -->
+    <form id="orderForm" action="/orders/submit" method="post">
+        <h3>주문 요약</h3>
+        <div class="order-summary" th:each="cartItem : ${cartList}">
+            <!-- Item의 이름, 수량, 가격 정보 출력 -->
+            <p th:text="${cartItem.item.item_name}">Product Name</p>
+            <p><input type="number" name="cnt[]" th:value="${cartItem.cnt}"></p>
+            <p th:text="${cartItem.item.sale_price * cartItem.cnt}">0</p>
+            <input type="hidden" name="item_keys[]" th:value="${cartItem.item.item_key}"/>
+        </div>
+
+        <p>총 상품 수량: <span th:text="${total_cnt}">0</span></p>
+        <p>총 가격: <span th:text="${total_price}">0</span> 원</p>
+        <input type="hidden" name="total_cnt" th:value="${total_cnt}">
+        <input type="hidden" name="total_price" th:value="${total_price}">
+
+
+        <!-- 주소 선택 폼 -->
+        <h3>배송지 선택</h3>
+
+        <label for="address">주소:</label>
+        <select id="address" name="address_key" required>
+            <option value="">주소를 선택하세요</option>
+            <!-- 데이터베이스의 Address ID와 실제 주소 데이터를 바인딩 -->
+            <option th:each="address : ${addressList}" th:value="${address.address_key}" th:text="${address.roadAddress}"></option>
+        </select>
+
+        <button type="submit">주문하기</button>
+    </form>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

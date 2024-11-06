@@ -54,6 +54,10 @@ public class Item {
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Cart> carts = new ArrayList<>();
 
+    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderItem> orderItems = new ArrayList<>();
+
+
     public String getItemImage() {
         return "data:image/jpeg;base64," + this.item_img; // itemImage가 Base64로 저장된 문자열이라 가정
     }

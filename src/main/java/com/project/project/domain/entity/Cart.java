@@ -9,6 +9,8 @@ import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -37,6 +39,10 @@ public class Cart {
 
     @Column(nullable = false)
     private LocalDateTime date;
+
+    @ManyToOne
+    @JoinColumn(name = "order_key")
+    private Orders orders;  // 각 Cart 항목이 Orders와 연결됩니다.
 
     @Builder
     public Cart(User user, Item item, Integer cnt,LocalDateTime date){
