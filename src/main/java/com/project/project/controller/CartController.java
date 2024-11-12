@@ -70,9 +70,6 @@ public class CartController {
                           HttpSession session, Model model){
 
         UUID user_id = (UUID) session.getAttribute("user_id");
-        System.out.println("item_key: " + item_key);
-        System.out.println("cnt: " + cnt);
-        System.out.println("user_id: " + user_id);
 
         if(user_id == null){
             return "redirect:/login ";

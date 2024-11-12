@@ -1,0 +1,105 @@
+/* 전체 페이지 스타일 */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f7f6;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+h2 {
+  text-align: center;
+  color: #4CAF50;
+  margin-bottom: 30px;
+  font-size: 24px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+table th, table td {
+  padding: 12px 15px;
+  text-align: center;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
+
+table th {
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bold;
+}
+
+table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+table td {
+  color: #555;
+}
+
+/* 글 작성하기 링크 버튼 스타일 */
+a.write-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 20px;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+a.write-btn:hover {
+  background-color: #45a049;
+}
+
+a.write-btn:focus {
+  outline: none;
+}
+
+a.write-btn:active {
+  background-color: #388e3c; /* 더 어두운 초록색 */
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .container {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  table th, table td {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+
+  a.write-btn {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+}

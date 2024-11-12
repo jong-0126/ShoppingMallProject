@@ -4,12 +4,14 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDate;
 import java.util.UUID;
 
 @Getter
+@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "question")
@@ -25,24 +27,23 @@ public class Question {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "item_key", nullable = false)
-    private Item item;
+    @Column(nullable = false)
+    private String inquiryType;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String title;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String content;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private LocalDate upload_date;
 
     @Builder
-    public Question(User user, Item item, String title, String content){
+    public Question(User user, String inquiryType, String title, String content){
 
         this.user = user;
-        this.item = item;
+        this.inquiryType = inquiryType;
         this.title = title;
         this.content = content;
         this.upload_date = LocalDate.now();
