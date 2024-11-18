@@ -75,9 +75,11 @@ public class QuestionController {
     }
 
     @GetMapping("/question/view")
-    public String questionView(@RequestParam(name = "id") UUID question_key, @RequestParam(name = "id") UUID comments_key, Model model, HttpSession session){
+    public String questionView(@RequestParam(name = "id") UUID question_key, Model model, HttpSession session){
 
         Boolean isSuperAdmin = (Boolean) session.getAttribute("isSuperAdmin");
+        UUID user_id = (UUID) session.getAttribute("user_id");
+        model.addAttribute("sessionUserId", user_id);
 
         System.out.println(isSuperAdmin);
 
@@ -126,6 +128,20 @@ public class QuestionController {
             question1.setContent(question.getContent());
             questionRepository.save(question1);
             return "redirect:/question";
+        }
+        return "redirect:/error";
+    }
+
+    @GetMapping("/question/delete/{id}")
+    public String questionDelete(@PathVariable("id") UUID question_key, Model model){
+
+        Optional<Question> questionOptional = questionRepository.findById(question_key);
+        if(questionOptional.isPresent()){
+            Question question = questionOptional.get();
+            questionRepository.delete(question);
+            model.addAttribute("message", "삭제 성공");
+            model.addAttribute("searchUrl", "/question");
+            return "message";
         }
         return "redirect:/error";
     }

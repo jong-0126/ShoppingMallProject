@@ -38,7 +38,10 @@
 
         <div class="actions">
             <a href="/question" class="btn secondary">목록으로</a>
-            <a th:href="@{/question/modify/{id}(id=${question.question_key})}" class="btn">수정</a>
+            <div th:if="${question.user.user_id == sessionUserId}">
+                <a th:href="@{/question/modify/{id}(id=${question.question_key})}" class="btn">수정</a>
+                <a th:href="@{/question/delete/{id}(id=${question.question_key})}" class="btn">삭제</a>
+            </div>
         </div>
     </div>
 </body>
