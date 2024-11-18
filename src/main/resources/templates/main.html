@@ -24,15 +24,10 @@
     <h2>인기 상품</h2>
     <div class="product-list">
         <!-- 상품 카드 -->
-        <div class="product-card">
-            <img src="img/product1.jpg" alt="상품 1">
-            <h3>상품명 1</h3>
-            <p>₩29,000</p>
-        </div>
-        <div class="product-card">
-            <img src="img/product2.jpg" alt="상품 2">
-            <h3>상품명 2</h3>
-            <p>₩45,000</p>
+        <div class="product-card" th:each="item : ${items}">
+            <img th:src="${item.ItemImage}" alt="상품 이미지">
+            <h3 th:text="${item.item_name}">상품명 1</h3>
+            <p th:text="'₩' + ${item.sale_price}">₩29,000</p>
         </div>
         <!-- 추가 상품 카드 필요 시 복사 -->
     </div>

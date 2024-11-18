@@ -123,7 +123,5 @@ public class OrdersController {
         model.addAttribute("searchUrl", "/main");
 
         return "message";
-
     }
-
 }

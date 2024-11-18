@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>문의글 목록</title>
   <link rel="stylesheet" href="css/questionList.css">
+  <link href="/css/header.css" rel="stylesheet" />
 </head>
 <body>
+<div th:insert="~{header :: header}"></div>
 <h2>문의글 목록</h2>
 <table>
   <thead>
@@ -20,13 +22,16 @@
   <tbody>
   <tr th:each="questionList : ${questionList}">
     <td th:text="${questionList.inquiryType}">배송 관련 문의</td>
-    <td th:text="${questionList.title}">제목</td>
+    <td>
+        <a th:text="${questionList.title}" th:href="@{/question/view(id=${questionList.question_key})}">제목</a>
+    </td>
     <td th:text="${questionList.upload_date}">2024-11-10</td>
     <td th:text="${questionList.user.name}">이름</td>
   </tr>
   </tbody>
 </table>
 <a href="/question/writeForm" class="write-btn">글 작성하기</a>
+<script src="js/header.js"></script>
 
 </body>
 </html>

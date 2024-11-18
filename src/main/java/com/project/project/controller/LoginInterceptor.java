@@ -17,5 +17,6 @@ public class LoginInterceptor implements HandlerInterceptor {
             return false; // 요청 중단
         }
         return true; // 세션에 유저 정보가 있으면 요청 진행
+
     }
 }

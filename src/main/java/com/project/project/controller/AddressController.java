@@ -36,11 +36,6 @@ public class AddressController {
     public String addressAdd(@ModelAttribute Address address, HttpSession session, Model model){
 
         UUID user_id = (UUID) session.getAttribute("user_id");
-        System.out.println(user_id);
-        System.out.println(address.getExtraAddress());
-        System.out.println(address.getAddress_key());
-        System.out.println(address.getDetailAddress());
-
 
         if(user_id == null){
             return "redirect:/login";

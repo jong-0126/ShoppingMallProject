@@ -3,8 +3,6 @@ package com.project.project.controller;
 import com.project.project.domain.entity.Item;
 import com.project.project.repository.ItemRepository;
 import com.project.project.service.ItemService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -43,7 +40,6 @@ public class ItemController {
         }
         return "itemDetail"; // itemDetail.html 템플릿
     }
-
 
     @GetMapping("/itemAdd")
     public String add_item() {

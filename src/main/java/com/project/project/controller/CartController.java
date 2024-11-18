@@ -104,12 +104,8 @@ public class CartController {
     @PostMapping("/cart/remove")
     public String removeCartItem(@RequestParam("cart_key") UUID cart_key) {
 
-
         // 장바구니에서 특정 항목 삭제
         cartService.removeItemFromCart(cart_key);
-
-        System.out.println(cart_key);
-
         return "redirect:/cart";  // 삭제 후 장바구니 페이지로 리다이렉트
     }
 }

@@ -42,6 +42,9 @@ public class User {
     @Column(columnDefinition = "TINYINT(1)", nullable = false)
     private Boolean sign_out = false;
 
+    @Column(columnDefinition = "TINYINT(1)", nullable = false)
+    private Boolean isSuperAdmin = false;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Orders> orders = new ArrayList<>();
 
@@ -64,12 +67,13 @@ public class User {
     private List<Cart> carts = new ArrayList<>();
 
     @Builder
-    public User(String name, String password, String email, String tel, Boolean gender, Boolean sign_out){
+    public User(String name, String password, String email, String tel, Boolean gender, Boolean sign_out, Boolean isSuperAdmin){
         this.name = name;
         this.password = password;
         this.email = email;
         this.tel = tel;
         this.gender = gender;
         this.sign_out = sign_out;
+        this.isSuperAdmin = isSuperAdmin;
     }
 }

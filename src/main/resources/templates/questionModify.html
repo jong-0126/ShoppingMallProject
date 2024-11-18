@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Question</title>
+  <link rel="stylesheet" href="/css/questionModify.css">
+</head>
+<body>
+<div class="container">
+  <h1>문의사항 수정</h1>
+  <form th:action="@{/question/update/{id}(id = ${question.question_key})}" method="post">
+    <!-- UUID 전달을 위한 숨겨진 필드 -->
+    <input type="hidden" name="question_key" th:value="${question.question_key}">
+
+    <!-- 제목 수정 -->
+    <div class="form-group">
+      <label for="title">제목</label>
+      <input type="text" id="title" name="title" th:value="${question.title}" required>
+    </div>
+
+    <!-- 내용 수정 -->
+    <div class="form-group">
+      <label for="content">내용</label>
+      <textarea id="content" name="content" rows="10" required th:text="${question.content}"></textarea>
+    </div>
+
+    <!-- 액션 버튼 -->
+    <div class="actions">
+      <button type="submit" class="btn">저장</button>
+      <a th:href="@{/question}" class="btn secondary">취소</a>
+    </div>
+  </form>
+</div>
+</body>
+</html>
