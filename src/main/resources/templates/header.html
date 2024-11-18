@@ -26,6 +26,7 @@
     <!-- 관리자 -->
     <div th:if="${isAdmin != null and isAdmin}">
       <a href="/main">홈</a>
+      <a href="/question">문의사항</a>
       <a href="/admin">관리자 페이지</a>
       <div th:if="${session.email}">
         <a onclick="logout()">로그아웃</a>
