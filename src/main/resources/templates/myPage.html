@@ -5,8 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>마이페이지</title>
   <link rel="stylesheet" href="css/myPage.css">
+  <link href="/css/header.css" rel="stylesheet" />
 </head>
 <body>
+
+<div th:insert="~{header :: header}"></div>
+
 <main class="my-page-container">
   <h2>마이페이지</h2>
 
@@ -31,7 +35,7 @@
   <!-- 등록된 주소 -->
   <section class="address-view card">
     <h3>등록된 주소</h3>
-    <div th:each="addressList : ${addressList}">
+    <div th:each="addressList : ${addressList}" class="address-card">
       <p th:text="'우편번호: ' + ${addressList.postcode}"></p>
       <p th:text="'도로명주소: ' + ${addressList.roadAddress}"></p>
       <p th:text="'지번주소: ' + ${addressList.jibunAddress}"></p>
@@ -56,26 +60,22 @@
       <tr>
         <th>주문 번호</th>
         <th>주문 날짜</th>
-        <th>주문 상태</th>
+        <th>주문 수량</th>
         <th>총 금액</th>
       </tr>
       </thead>
-      <tbody>
+      <tbody th:each="orderList : ${orderList}">
       <tr>
-        <td>001</td>
-        <td>2024-01-01</td>
-        <td>배송 중</td>
-        <td>50,000 원</td>
-      </tr>
-      <tr>
-        <td>002</td>
-        <td>2024-01-15</td>
-        <td>배송 완료</td>
-        <td>30,000 원</td>
+        <td th:text="${orderList.order_key}">001</td>
+        <td th:text="${orderList.order_date}">2024-01-01</td>
+        <td th:text="${orderList.total_cnt}">2024-01-01</td>
+        <td th:text="${orderList.total_price}">50,000 원</td>
       </tr>
       </tbody>
     </table>
   </section>
 </main>
+
+<script src="js/header.js"></script>
 </body>
 </html>

@@ -1,108 +1,147 @@
-/* myPage.css */
-
-* {
+/* 공통 스타일 */
+body {
+  font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  background-color: #f4f4f4; /* 배경색 */
+  color: #333; /* 기본 글자색 */
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f6f9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
-.my-page-container {
-  width: 90%;
-  max-width: 800px;
-  margin: 20px auto;
+main.my-page-container {
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 20px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
 }
 
-h2 {
-  font-size: 28px;
-  color: #333;
-  margin-bottom: 20px;
-  border-bottom: 2px solid #4a90e2;
-  padding-bottom: 10px;
-}
-
-.card {
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin-bottom: 20px;
-}
-
-h3 {
-  font-size: 22px;
-  color: #333;
+h2, h3 {
+  color: #444;
   margin-bottom: 15px;
 }
 
-.info, .address-info form, .order-history table {
+/* 카드 스타일 */
+.card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 카드 그림자 */
+}
+
+/* 섹션 간격 */
+section {
+  margin-bottom: 20px;
+}
+
+/* 프로필 정보 */
+.profile-info {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column; /* 세로 정렬 */
+  align-items: flex-start; /* 왼쪽 정렬 */
+}
+
+.profile-info .info {
   margin-bottom: 10px;
 }
 
-.info label {
-  color: #666;
+.profile-info label {
   font-weight: bold;
+  margin-right: 10px;
 }
 
-.info p {
-  color: #333;
+.profile-info p {
+  margin: 0;
+  color: #666;
 }
 
-.btn {
-  background-color: #4a90e2;
-  color: #fff;
+.profile-info .btn {
+  margin-top: 15px;
+  background-color: #3498db;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.profile-info .btn:hover {
+  background-color: #2980b9;
+}
+
+/* 등록된 주소 */
+.address-view .address-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.address-view .address-card p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* 주소 등록 버튼 */
+.address-info .btn {
+  background-color: #2ecc71;
+  color: #ffffff;
   border: none;
   border-radius: 4px;
   padding: 10px 20px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-size: 16px;
-  margin-top: 15px;
+  font-size: 14px;
+  transition: background-color 0.3s;
 }
 
-.btn:hover {
-  background-color: #357ABD;
+.address-info .btn:hover {
+  background-color: #27ae60;
 }
 
-/* 주문 내역 스타일 */
+/* 주문 내역 */
 .order-history table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
+  text-align: left;
+  font-size: 14px;
 }
 
 .order-history th, .order-history td {
-  padding: 12px;
+  padding: 10px;
   border-bottom: 1px solid #ddd;
-  text-align: center;
-  color: #555;
 }
 
 .order-history th {
-  background-color: #f0f4f8;
-  color: #333;
+  background-color: #f8f9fa;
   font-weight: bold;
 }
 
-.order-history tr:nth-child(even) {
-  background-color: #f9fafc;
+.order-history tbody tr:hover {
+  background-color: #f1f1f1;
 }
 
-.order-history tr:hover {
-  background-color: #eaf2f8;
+.order-history td {
+  color: #555;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  main.my-page-container {
+    padding: 10px;
+  }
+
+  .profile-info .info {
+    margin-bottom: 5px;
+  }
+
+  .order-history table {
+    font-size: 12px;
+  }
+
+  .order-history th, .order-history td {
+    padding: 8px;
+  }
 }

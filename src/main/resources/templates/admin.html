@@ -22,6 +22,9 @@
                         <a class="nav-link" href="#" data-section="products">상품 관리</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#" data-section="orders">주문 관리</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#" data-section="users">사용자 관리</a>
                     </li>
                 </ul>
@@ -62,6 +65,29 @@
                                 <button class="btn btn-sm btn-danger">삭제</button> <!-- 삭제 버튼 -->
                             </td>
                         </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!--주문관리 섹션-->
+            <section id="orders" class="admin-section" style="display: none;">
+                <h2>주문 관리</h2>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>주문자</th>
+                        <th>주문 상품</th>
+                        <th>주문 수량</th>
+                        <th>주문 일</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>홍길동</td>
+                        <td>hong@example.com</td>
+                        <td>2024-01-01</td>
+                        <td><button class="btn btn-sm btn-danger">삭제</button></td>
+                    </tr>
                     </tbody>
                 </table>
             </section>

@@ -1,8 +1,10 @@
 package com.project.project.controller;
 
 import com.project.project.domain.entity.Address;
+import com.project.project.domain.entity.Orders;
 import com.project.project.domain.entity.User;
 import com.project.project.repository.AddressRepository;
+import com.project.project.repository.OrdersRepository;
 import com.project.project.repository.UserRepository;
 import com.project.project.service.UserService;
 import jakarta.servlet.http.HttpSession;
@@ -29,6 +31,9 @@ public class myPageController {
     @Autowired
     private AddressRepository addressRepository;
 
+    @Autowired
+    private OrdersRepository ordersRepository;
+
     @GetMapping("/myPage")
     public String myPageView(HttpSession session, Model model){
 
@@ -44,9 +49,19 @@ public class myPageController {
             User user = userOptional.get();
 
             List<Address> addressList = addressRepository.findByUser(user);
+            List<Orders> ordersList = ordersRepository.findByUser(user);
 
+            model.addAttribute("orderList", ordersList);
             model.addAttribute("addressList", addressList);
             model.addAttribute("user", user);
+
+            Boolean isSuperAdmin = (Boolean) session.getAttribute("isSuperAdmin");
+
+            if(isSuperAdmin != null && isSuperAdmin){
+                model.addAttribute("isAdmin", true);
+            }else{
+                model.addAttribute("isAdmin", false);
+            }
 
             return "myPage";
 
