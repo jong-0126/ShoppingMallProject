@@ -56,6 +56,14 @@ public class CartController {
             // Model에 장바구니 목록 추가
             model.addAttribute("cartList", cartList);
 
+            Boolean isSuperAdmin = (Boolean) session.getAttribute("isSuperAdmin");
+
+            if(isSuperAdmin != null && isSuperAdmin){
+                model.addAttribute("isAdmin", true);
+            }else{
+                model.addAttribute("isAdmin", false);
+            }
+
             // 장바구니 페이지로 이동
             return "cart";
         }

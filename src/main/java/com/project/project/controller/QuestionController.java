@@ -40,9 +40,17 @@ public class QuestionController {
 
 
     @GetMapping("/question")
-    public String questionList(Model model){
+    public String questionList(Model model, HttpSession session){
 
         model.addAttribute("questionList", questionService.questionList());
+
+        Boolean isSuperAdmin = (Boolean) session.getAttribute("isSuperAdmin");
+
+        if(isSuperAdmin != null && isSuperAdmin){
+            model.addAttribute("isAdmin", true);
+        }else{
+            model.addAttribute("isAdmin", false);
+        }
         return "questionList";
     }
 

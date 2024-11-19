@@ -1,92 +1,135 @@
-/* cart.css */
-
+/* 공통 스타일 */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
-  color: #333;
+  font-family: 'Arial', sans-serif;
   margin: 0;
-  padding: 20px;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
 }
 
 h2 {
   text-align: center;
+  margin: 20px 0;
   color: #444;
 }
 
-section {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
+/* 테이블 스타일 */
 table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-th, td {
-  padding: 12px;
-  text-align: center;
+thead {
+  background-color: #3498db;
+  color: #ffffff;
+}
+
+thead th {
+  text-align: left;
+  padding: 15px;
+  font-weight: bold;
+}
+
+tbody tr {
   border-bottom: 1px solid #ddd;
 }
 
-th {
-  background-color: #007bff;
-  color: #fff;
+tbody td {
+  padding: 15px;
+  text-align: center;
 }
 
-td {
-  color: #555;
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background-color: #f9f9f9;
 }
 
 input[type="number"] {
   width: 60px;
-  padding: 4px;
-  font-size: 16px;
+  padding: 5px;
   text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-button {
-  padding: 8px 12px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #dc3545;
+button[type="submit"] {
+  background-color: #e74c3c;
+  color: #ffffff;
   border: none;
+  padding: 8px 12px;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  font-size: 14px;
+  transition: background-color 0.3s;
 }
 
-button:hover {
-  background-color: #c82333;
+button[type="submit"]:hover {
+  background-color: #c0392b;
 }
 
+/* 요약 정보 스타일 */
 .cart-summary {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px;
-  background-color: #f1f1f1;
+  background-color: #ffffff;
   border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .cart-summary p {
-  font-size: 18px;
-  color: #333;
   margin: 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.cart-summary span {
+  font-weight: bold;
+  color: #222;
 }
 
 .cart-summary button {
+  background-color: #2ecc71;
+  color: #ffffff;
+  border: none;
   padding: 10px 20px;
-  font-size: 16px;
-  background-color: #28a745;
   border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .cart-summary button:hover {
-  background-color: #218838;
+  background-color: #27ae60;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  table {
+    font-size: 12px;
+  }
+
+  input[type="number"] {
+    width: 50px;
+  }
+
+  .cart-summary {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cart-summary button {
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+  }
 }

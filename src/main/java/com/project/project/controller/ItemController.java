@@ -3,6 +3,7 @@ package com.project.project.controller;
 import com.project.project.domain.entity.Item;
 import com.project.project.repository.ItemRepository;
 import com.project.project.service.ItemService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,9 +25,18 @@ public class ItemController {
     private ItemRepository itemRepository;
 
     @GetMapping("/item")
-    public String getItems(Model model) {
+    public String getItems(Model model, HttpSession session) {
         List<Item> itemList = itemService.itemList(); // 모든 아이템을 가져오는 서비스 메서드
         model.addAttribute("itemList", itemList);
+
+        Boolean isSuperAdmin = (Boolean) session.getAttribute("isSuperAdmin");
+
+        if(isSuperAdmin != null && isSuperAdmin){
+            model.addAttribute("isAdmin", true);
+        }else{
+            model.addAttribute("isAdmin", false);
+        }
+
         return "item"; // 아이템 리스트를 보여줄 템플릿 이름
     }
 
