@@ -43,12 +43,6 @@ public class Item {
     private Integer cnt;
 
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Wish> wish = new ArrayList<>();
-
-    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Review> reviews = new ArrayList<>();
-
-    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Cart> carts = new ArrayList<>();
 
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)

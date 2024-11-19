@@ -1,6 +1,5 @@
 package com.project.project.controller;
 
-import com.project.project.domain.entity.Admin;
 import com.project.project.domain.entity.Comments;
 import com.project.project.domain.entity.Question;
 import com.project.project.domain.entity.User;
