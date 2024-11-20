@@ -41,7 +41,8 @@ public class ItemController {
     }
 
     @GetMapping("/itemDetail")
-    public String getItemDetail(@RequestParam(name = "item_key") UUID item_key, Model model,HttpSession session) {
+    public String getItemDetail(@RequestParam(name = "item_key") UUID item_key,
+                                Model model,HttpSession session) {
         Optional<Item> itemOptional = itemRepository.findById(item_key);
         if (itemOptional.isPresent()) {
             model.addAttribute("item", itemOptional.get());

@@ -67,6 +67,7 @@ public class UserController {
             model.addAttribute("message", "로그인 성공");
             model.addAttribute("searchUrl", "/main");
             return "message"; // 로그인 성공 시 메시지 페이지로 이동
+
         } else {
             model.addAttribute("message", "로그인 실패, 이메일 및 비밀번호가 올바르지 않습니다.");
             model.addAttribute("searchUrl", "/login");
