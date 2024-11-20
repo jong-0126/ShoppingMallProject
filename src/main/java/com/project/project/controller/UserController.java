@@ -50,7 +50,9 @@ public class UserController {
     }
 
     @PostMapping("/loginPro")
-    public String loginPro(@RequestParam(name = "email") String email, @RequestParam(name = "password") String password, Model model, HttpSession session) {
+    public String loginPro(@RequestParam(name = "email") String email,
+                           @RequestParam(name = "password") String password,
+                           Model model, HttpSession session) {
 
         System.out.println("Login attempt for email: " + email); // 로그 추가
 

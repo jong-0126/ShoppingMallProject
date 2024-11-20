@@ -41,12 +41,20 @@ public class ItemController {
     }
 
     @GetMapping("/itemDetail")
-    public String getItemDetail(@RequestParam(name = "item_key") UUID item_key, Model model) {
+    public String getItemDetail(@RequestParam(name = "item_key") UUID item_key, Model model,HttpSession session) {
         Optional<Item> itemOptional = itemRepository.findById(item_key);
         if (itemOptional.isPresent()) {
             model.addAttribute("item", itemOptional.get());
         } else {
             return "error"; // 아이템을 찾지 못한 경우의 처리
+        }
+
+        Boolean isSuperAdmin = (Boolean) session.getAttribute("isSuperAdmin");
+
+        if(isSuperAdmin != null && isSuperAdmin){
+            model.addAttribute("isAdmin", true);
+        }else{
+            model.addAttribute("isAdmin", false);
         }
         return "itemDetail"; // itemDetail.html 템플릿
     }
