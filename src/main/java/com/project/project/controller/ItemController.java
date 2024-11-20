@@ -92,14 +92,6 @@ public class ItemController {
 
         return "message";
     }
-
-    @GetMapping("/admin")
-    public String itemList(Model model){
-
-        List<Item> itemList = itemService.itemList();
-        model.addAttribute("itemList", itemList);
-        return "admin";
-    }
 }
 
 
