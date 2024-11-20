@@ -1,0 +1,78 @@
+/* body 기본 스타일 */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9; /* 연한 회색 배경 */
+    margin: 0;
+    padding: 0;
+}
+
+/* 페이지 컨테이너 */
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: #333; /* 어두운 글씨 */
+    font-size: 24px;
+}
+
+/* 주문 정보 */
+p {
+    font-size: 16px;
+    margin: 10px auto;
+    color: #555; /* 중간 회색 */
+    max-width: 600px;
+    line-height: 1.5;
+}
+
+/* 제목 */
+h2 {
+    text-align: center;
+    color: #444; /* 어두운 회색 */
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+/* 테이블 스타일 */
+table {
+    width: 80%;
+    margin: 20px auto; /* 중앙 정렬 */
+    border-collapse: collapse; /* 테두리 겹침 제거 */
+    background-color: white;
+    border: 1px solid #ddd; /* 테두리 */
+    font-size: 14px;
+}
+
+/* 테이블 헤더 */
+table thead {
+    background-color: #f2f2f2; /* 연한 회색 */
+}
+
+table th {
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 1px solid #ddd; /* 헤더와 내용 구분 */
+}
+
+/* 테이블 본문 */
+table td {
+    padding: 10px;
+    text-align: left;
+    color: #555;
+    border-bottom: 1px solid #ddd; /* 줄 구분선 */
+}
+
+/* 테이블 행 hover 효과 */
+table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* 반응형 테이블 */
+@media screen and (max-width: 768px) {
+    table {
+        width: 90%; /* 화면이 작아지면 테이블 넓이 조정 */
+    }
+    p, h1, h2 {
+        font-size: 16px; /* 텍스트 크기 축소 */
+    }
+}

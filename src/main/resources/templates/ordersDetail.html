@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>주문 상세</title>
+  <link href="/css/ordersDetail.css" rel="stylesheet" />
+</head>
+<body>
+<h1>주문 상세</h1>
+<p>주문 번호: <span th:text="${order.order_key}"></span></p>
+<p>사용자: <span th:text="${order.user.name}"></span></p>
+<p>총 가격: <span th:text="${order.total_price}"></span></p>
+<p>총 수량: <span th:text="${order.total_cnt}"></span></p>
+<p>주문일: <span th:text="${order.order_date}"></span></p>
+
+<h2>주문 상품</h2>
+<table>
+  <thead>
+  <tr>
+    <th>상품 이름</th>
+    <th>수량</th>
+    <th>가격</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="item : ${order.orderItems}">
+    <td th:text="${item.item.item_name}"></td>
+    <td th:text="${item.cnt}"></td>
+    <td th:text="${item.price}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

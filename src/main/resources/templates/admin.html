@@ -71,22 +71,24 @@
 
             <!--주문관리 섹션-->
             <section id="orders" class="admin-section" style="display: none;">
-                <h2>주문 관리</h2>
+                <h1>주문 관리</h1>
                 <table class="table">
                     <thead>
                     <tr>
+                        <th>주문 번호</th>
                         <th>주문자</th>
-                        <th>주문 상품</th>
-                        <th>주문 수량</th>
-                        <th>주문 일</th>
+                        <th>총 가격</th>
+                        <th>주문일</th>
+                        <th>상세 보기</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>홍길동</td>
-                        <td>hong@example.com</td>
-                        <td>2024-01-01</td>
-                        <td><button class="btn btn-sm btn-danger">삭제</button></td>
+                    <tr th:each="order : ${ordersList}">
+                        <td th:text="${order.order_key}"></td>
+                        <td th:text="${order.user.name}"></td>
+                        <td th:text="${order.total_price}"></td>
+                        <td th:text="${order.order_date}"></td>
+                        <td><a th:href="@{/admin/orders/{orderKey}(orderKey=${order.order_key})}">상세</a></td>
                     </tr>
                     </tbody>
                 </table>
@@ -100,16 +102,21 @@
                     <tr>
                         <th>사용자명</th>
                         <th>이메일</th>
-                        <th>가입일</th>
+                        <th>전화번호</th>
                         <th>작업</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>홍길동</td>
-                        <td>hong@example.com</td>
-                        <td>2024-01-01</td>
-                        <td><button class="btn btn-sm btn-danger">삭제</button></td>
+                    <tr th:each="user : ${userList}">
+                        <td th:text="${user.name}"></td>
+                        <td th:text="${user.email}"></td>
+                        <td th:text="${user.tel}"></td>
+                        <!--                            <td><button class="btn btn-sm btn-danger">삭제</button></td>-->
+                        <td>
+                            <button class="btn btn-sm btn-danger"
+                                    th:attr="data-id=${user.user_id}"
+                                    onclick="deleteUser(this)">삭제</button>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
