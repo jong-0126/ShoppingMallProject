@@ -13,4 +13,5 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     Optional<User> findById(UUID user_id);
     @Query(value = "SELECT * FROM User WHERE is_super_admin = false;", nativeQuery = true)
     List<User> findAllUsers();
+    void deleteById(UUID user_id);
 }

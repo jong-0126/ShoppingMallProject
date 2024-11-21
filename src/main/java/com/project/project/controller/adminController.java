@@ -16,6 +16,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Optional;
@@ -55,6 +57,13 @@ public class adminController {
         model.addAttribute("userList", userList);
 
         return "admin";
+    }
+
+    // 사용자 삭제
+    @PostMapping("/admin/users/remove")
+    public String removeUsers(@RequestParam("user_id") UUID user_id){
+        userService.removeUsers(user_id);
+        return "redirect:/admin";
     }
 
     @GetMapping("/admin/orders/{id}")
