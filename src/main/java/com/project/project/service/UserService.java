@@ -41,7 +41,13 @@ public class UserService {
         return userRepository.findByEmail(email).filter(user -> passwordEncoder.matches(password, user.getPassword()));
     }
 
+    // User 사용자 목록 조회
     public List<User> userList(){
         return userRepository.findAllUsers();
+    }
+
+    // User 오브젝트에서 user_id로 특정 user 삭제
+    public void removeUsers(UUID user_id){
+        userRepository.deleteById(user_id);
     }
 }

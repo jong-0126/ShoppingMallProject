@@ -111,12 +111,14 @@
                         <td th:text="${user.name}"></td>
                         <td th:text="${user.email}"></td>
                         <td th:text="${user.tel}"></td>
-                        <!--                            <td><button class="btn btn-sm btn-danger">삭제</button></td>-->
-                        <td>
-                            <button class="btn btn-sm btn-danger"
-                                    th:attr="data-id=${user.user_id}"
-                                    onclick="deleteUser(this)">삭제</button>
-                        </td>
+                        <!-- 사용자 삭제 -->
+                        <form action="/admin/users/remove" method="post">
+                            <input type="hidden" name="user_id" th:value="${user.user_id}" />
+                            <td>
+                               <button class="btn btn-sm btn-danger" type="submit">Remove</button>
+                           </td>
+                        </form>
+
                     </tr>
                     </tbody>
                 </table>
