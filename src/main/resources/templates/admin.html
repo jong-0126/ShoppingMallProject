@@ -54,17 +54,17 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <tr th:if="${itemList.size() == 0}">
-                            <td colspan="4">등록된 상품이 없습니다.</td>
-                        </tr>
-                        <tr th:each="item : ${itemList}">
-                            <td th:text="${item.item_name}"></td>
-                            <td th:text="${item.sale_price}"></td>
-                            <td th:text="${item.cnt}"></td>
-                            <td>
-                                <button class="btn btn-sm btn-danger">삭제</button> <!-- 삭제 버튼 -->
-                            </td>
-                        </tr>
+                    <tr th:if="${itemList.size() == 0}">
+                        <td colspan="4">등록된 상품이 없습니다.</td>
+                    </tr>
+                    <tr th:each="item : ${itemList}">
+                        <td th:text="${item.item_name}"></td>
+                        <td th:text="${item.sale_price}"></td>
+                        <td th:text="${item.cnt}"></td>
+                        <td>
+                            <button class="btn btn-sm btn-danger">삭제</button> <!-- 삭제 버튼 -->
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </section>
@@ -111,12 +111,14 @@
                         <td th:text="${user.name}"></td>
                         <td th:text="${user.email}"></td>
                         <td th:text="${user.tel}"></td>
-                        <!--                            <td><button class="btn btn-sm btn-danger">삭제</button></td>-->
-                        <td>
-                            <button class="btn btn-sm btn-danger"
-                                    th:attr="data-id=${user.user_id}"
-                                    onclick="deleteUser(this)">삭제</button>
-                        </td>
+                        <!-- 사용자 삭제 -->
+                        <form action="/admin/users/remove" method="post">
+                            <input type="hidden" name="user_id" th:value="${user.user_id}" />
+                            <td>
+                                <button class="btn btn-sm btn-danger" type="submit">Remove</button>
+                            </td>
+                        </form>
+
                     </tr>
                     </tbody>
                 </table>
